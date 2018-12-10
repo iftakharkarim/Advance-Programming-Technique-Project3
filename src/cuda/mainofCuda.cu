@@ -12,7 +12,7 @@ using namespace std;
 // device function which does row wise DFT
 __global__ doDFT1(Complex *gpuArray1, Complex *gpuArray2, int width, int height, float M_PI) {
 	int index = threadIdx.x + blockIdx.x * blockDim.x;
-	index = min(index, width*height);
+	index = min(index, width*height - 1);
 	int y = index / width; // current row
 	Complex value = new Complex();
 	for(int k = 0; k < width; k++) {
@@ -24,7 +24,7 @@ __global__ doDFT1(Complex *gpuArray1, Complex *gpuArray2, int width, int height,
 // device function which does column wise DFT
 __global__ doDFT2(Complex *gpuArray1, Complex *gpuArray2, int width, int height, float M_PI) {
 	int index = threadIdx.x + blockIdx.x * blockDim.x;
-	index = min(index, width*height);
+	index = min(index, width*height - 1);
 	int x = index % width; // current column
 	Complex value = new Complex();
 	for(int k = 0; k < height; k++) {
