@@ -51,31 +51,6 @@ void fft2 (Complex *x, int n) {
     }
 }
 
-/*void fft(Complex *v, int n, Complex *tmp) {
-    if(n>1) {
-        int k, m; Complex z, w, *vo, *ve;
-        ve = tmp; vo = tmp + n/2;
-        for(k = 0; k <n/2; k++) {
-            ve[k] = v[k*2];
-            vo[k] = v[2*k+1];
-        }
-        fft(ve, n/2, v);
-        fft(vo, n/2, v);
-        for(m = 0; m<n/2; m++) {
-            w = Complex(cos(2*M_PI*m/(float)n), -sin(2*M_PI*m/(float)n));
-            //w.real = cos(2*M_PI*m/(float)n);
-            //w.imag = -sin(2*M_PI*m/(float)n);
-            //z.real = w.real*vo[m].real - w.imag*vo[m].imag;
-            //z.imag = w.real*vo[m].imag + w.imag*vo[m].real;
-            z = w*vo[m];
-            v[m].real = ve[m].real + z.real;
-            v[m].imag = ve[m].imag + z.imag;
-            v[m+n/2].real = ve[m].real - z.real;
-            v[m+n/2].imag = ve[m].imag - z.imag;
-        }
-    }
-    return;
-}*/
 
 int main(int argc, char** argv){
     
