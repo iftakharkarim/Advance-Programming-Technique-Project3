@@ -1,4 +1,5 @@
 close all
+format long;
 file = fopen('Tower256.txt');
 
 a = fscanf(file,'%i');
@@ -17,10 +18,9 @@ I = mat2gray(b);
 imshow(I)
 figure
 b2 = fft2(b);
-format long;
 % outputs comma delimited fft2 to file
 dlmwrite('outFile.txt',b2);
-dlmwrite('outFilefftshift.txt',b2);
+dlmwrite('outFilefftshift.txt',fftshift(b2));
 
 breal = real(b2);
 bimag = imag(b2);
