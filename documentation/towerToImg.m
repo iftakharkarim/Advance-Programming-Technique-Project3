@@ -17,8 +17,15 @@ I = mat2gray(b);
 imshow(I)
 figure
 b2 = fft2(b);
+format long;
 % outputs comma delimited fft2 to file
 dlmwrite('outFile.txt',b2);
+dlmwrite('outFilefftshift.txt',b2);
+
+breal = real(b2);
+bimag = imag(b2);
+
+
 
 imshow(log(abs(b2)),[])
 % highest freq above is in the middle
