@@ -17,8 +17,8 @@ end
 b = b;
 
 I = mat2gray(b);
-imshow(I)
-figure
+%imshow(I)
+%figure
 b2 = fft2(b);
 % outputs comma delimited fft2 to file
 dlmwrite('outFile.txt',b2);
@@ -26,10 +26,10 @@ dlmwrite('outFilefftshift.txt',fftshift(b2));
 
 breal = real(b2);
 bimag = imag(b2);
-
+fprintf(cc,'%d %d \n',size,size);
 for i = 1:size
    for j = 1:size
-      fprintf(cc,'(%d,%d) ', breal(j,i), bimag(j,i));
+      fprintf(cc,'(%.4f,%.4f) ', breal(i,j), bimag(i,j));
    end
    fprintf(cc,'\n');
 end
