@@ -1,9 +1,11 @@
 close all
 format long;
 file = fopen('Tower256.txt');
+cc = fopen('formatMatched.txt','w');
 
 a = fscanf(file,'%i');
 dim = a(1);
+size = a(1);
 a = a(3:end);
 b = zeros(dim,dim);
 
@@ -25,10 +27,22 @@ dlmwrite('outFilefftshift.txt',fftshift(b2));
 breal = real(b2);
 bimag = imag(b2);
 
+for i = 1:size
+   for j = 1:size
+      fprintf(cc,'(%d,%d) ', breal(j,i), bimag(j,i));
+   end
+   fprintf(cc,'\n');
+end
 
-
-imshow(log(abs(b2)),[])
+%imshow(log(abs(b2)),[])
 % highest freq above is in the middle
 
-imshow(fftshift(log(abs(b2))),[])
+%imshow(fftshift(log(abs(b2))),[])
 % now the lowest frequency is in the middle, highest are at the edges
+
+fclose(file);
+fclose(cc);
+
+
+
+
