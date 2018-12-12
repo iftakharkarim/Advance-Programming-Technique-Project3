@@ -32,7 +32,7 @@ Complex Complex::operator-(const Complex &b) const {
 Complex Complex::operator*(const Complex &b) const {
     Complex result;
     result.real = (this->real*b.real)-(this->imag*b.imag);
-    result.imag = (this->real*b.real)+(this->imag*b.imag);
+    result.imag = (this->real*b.imag)+(this->imag*b.real);
     return result;
 }
 

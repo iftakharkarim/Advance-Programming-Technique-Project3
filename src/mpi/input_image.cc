@@ -3,7 +3,7 @@
 //
 
 #include "input_image.h"
-#include "complex.h"
+#include "complex.cc"
 
 #include <fstream>
 #include <sstream>
