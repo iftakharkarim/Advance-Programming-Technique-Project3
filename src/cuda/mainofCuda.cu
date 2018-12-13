@@ -3,7 +3,7 @@
 //#include <cuda.h>
 #include <algorithm>
 #include <cmath>
-#include <chrono>
+//#include <chrono>
 
 using namespace std;
 

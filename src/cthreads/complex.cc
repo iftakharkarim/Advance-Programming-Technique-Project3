@@ -7,7 +7,7 @@
 #include <cmath>
 #include <iomanip>
 
-const float PI = 3.14159265358979f;
+//const float PI = 3.14159265358979f;
 
 Complex::Complex() : real(0.0f), imag(0.0f) {}
 

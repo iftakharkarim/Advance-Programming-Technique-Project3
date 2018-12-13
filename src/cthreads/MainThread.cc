@@ -1,13 +1,14 @@
 #include <iostream>
 #include "complex.h"
-#include <complex.cc>
+#include "complex.cc"
+#include "input_image.cc"
 #include <fstream>
 #include "input_image.h"
-#include <input_image.cc>
 #include <thread>
 #include <string>
 #include <cmath>
 #include <cstring>
+//#include <chrono>
 
 #define PI 3.14159265358979323846
 
@@ -18,6 +19,7 @@ void launchColThreads(Complex *x, Complex *y, int height, int width, int colPerT
 
 
 int main(int argc, char** argv){
+    
     std::ifstream inputFile;
     std::ofstream outputFile;
     if(argc == 4){
@@ -25,7 +27,7 @@ int main(int argc, char** argv){
     else{
         std::cout << "Unexpected call, please format ./file mode inputfile outputfile" << std::endl;
     }
-
+    //auto timer = std::chrono::system_clock::now();
     std::cout << "begin" << std::endl;
     InputImage img = InputImage(argv[2]);
     int imgWidth = img.get_width();
@@ -52,6 +54,9 @@ int main(int argc, char** argv){
     std::cout << "First element in array: " << cpy[0].real << ", " << cpy[0].imag << std::endl;
     img.save_image_data(argv[3],cpy,imgWidth, imgHeight);
 
+    //auto end = std::chrono::system_clock::now();
+    //std::chrono::duration<double> time = end-timer;
+   //std::cout << "Time elapsed = " << time.count() << std::endl;
     return 0;
 }
 
@@ -159,6 +164,7 @@ void colDFT(Complex *x1, Complex *y1, int start, int last, int width, int height
             Complex hold = y1[x+j*height];
             inter = inter + hold*W;
         }
-        x1[x*width+y] = inter;
+        //x*width+y
+        x1[k] = inter;
     }
 }

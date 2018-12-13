@@ -2,8 +2,8 @@
 // Created by brian on 11/20/18.
 //
 
-#include "input_image.h"
 #include "complex.h"
+#include <input_image.h>
 
 #include <fstream>
 #include <sstream>
