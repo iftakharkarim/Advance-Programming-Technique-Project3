@@ -18,12 +18,12 @@ end
 b = b';
 
 I = mat2gray(b);
-%imshow(I)
+imshow(I)
 %figure
 b2 = fft2(b);
 % outputs comma delimited fft2 to file
-dlmwrite('outFile.txt',b2);
-dlmwrite('outFilefftshift.txt',fftshift(b2));
+%dlmwrite('outFile.txt',b2);
+%dlmwrite('outFilefftshift.txt',fftshift(b2));
 
 breal = real(b2);
 bimag = imag(b2);
@@ -37,8 +37,8 @@ for i = 1:size
    fprintf(com,'\n');
 end
 
-imshow(log(abs(b2)),[])
-title('log(abs(fft2))');
+%imshow(log(abs(b2)),[])
+%title('log(abs(fft2))');
 % highest freq above is in the middle
 
 %imshow(fftshift(log(abs(b2))),[])
