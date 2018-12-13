@@ -13,7 +13,7 @@ InputImage::InputImage(const char* filename) {
     std::ifstream ifs(filename);
     if(!ifs) {
         std::cout << "Can't open image file " << filename << std::endl;
-        exit(1);
+//        exit(1);
     }
 
     ifs >> w >> h;
