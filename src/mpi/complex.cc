@@ -47,6 +47,7 @@ Complex Complex::angle() const {
     Complex result;
     result.real = atan(this->imag/this->real);
     return result;
+    //return Complex(atan2(imag, real) * 360 / (2 * PI));
 }
 
 Complex Complex::conj() const {
