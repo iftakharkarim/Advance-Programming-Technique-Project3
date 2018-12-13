@@ -5,6 +5,7 @@
 #include "complex.h"
 
 #include <cmath>
+#include <iomanip>
 
 const float PI = 3.14159265358979f;
 
@@ -32,7 +33,7 @@ Complex Complex::operator-(const Complex &b) const {
 Complex Complex::operator*(const Complex &b) const {
     Complex result;
     result.real = (this->real*b.real)-(this->imag*b.imag);
-    result.imag = (this->real*b.real)+(this->imag*b.imag);
+    result.imag = (this->real*b.imag)+(this->imag*b.real);
     return result;
 }
 
@@ -58,8 +59,10 @@ Complex Complex::conj() const {
 
 std::ostream& operator<< (std::ostream& os, const Complex& rhs) {
     Complex c(rhs);
-    if(fabsf(rhs.imag) < 1e-10) c.imag = 0.0f;
-    if(fabsf(rhs.real) < 1e-10) c.real = 0.0f;
+    if(fabsf(rhs.imag) < 1e-13) c.imag = 0.0f;
+    if(fabsf(rhs.real) < 1e-13) c.real = 0.0f;
+    std::cout << std::fixed;
+    std::cout << std::setprecision(4);
 
     if(c.imag == 0) {
         os << c.real;

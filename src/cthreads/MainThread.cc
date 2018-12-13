@@ -47,7 +47,7 @@ int main(int argc, char** argv){
     std::cout << "Beginning DFT calculation" << std::endl;
 
     launchRowThreads(arry,cpy, imgHeight, rowsPerThread);
-    launchColThreads(cpy,arry,imgHeight,imgWidth,colPerThread);
+    launchColThreads(cpy,arry,imgHeight,imgWidth,rowsPerThread);
 
     std::cout << "First element in array: " << cpy[0].real << ", " << cpy[0].imag << std::endl;
     img.save_image_data(argv[3],cpy,imgWidth, imgHeight);
@@ -139,7 +139,7 @@ void rowDFT(Complex *x1, Complex *y1, int start, int last, int width){
         y = k/width;
         x = k%width;
         for (int j = 0; j < width; j++) {
-            Complex w(cos(2*PI*x*j/width), -1*sin(2*PI*x*j/width));
+            Complex w(cos(2*PI*x*j/(float)width), -1*sin(2*PI*x*j/(float)width));
             Complex hold = y1[y*width+j];
             inter = inter + hold*w;
         }
@@ -155,10 +155,10 @@ void colDFT(Complex *x1, Complex *y1, int start, int last, int width, int height
         x = k%height;
         y = k/width;
         for (int j = 0; j < height; j++) {
-            Complex W(cos(2*PI*y*j/height), -1*sin(2*PI*y*j/height));
+            Complex W(cos(2*PI*y*j/(float)height), -1*sin(2*PI*y*j/(float)height));
             Complex hold = y1[x+j*height];
             inter = inter + hold*W;
         }
-        x1[k] = inter;
+        x1[x*width+y] = inter;
     }
 }
