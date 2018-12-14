@@ -1,0 +1,15 @@
+# Test for CUDA running
+
+#PBS -N P31~~
+#PBS -l walltime=30:00
+#PBS -l pmem=16gb
+#PBS -l nodes=1:ppn=8:gpus=1:exclusive_process
+#PBS -q coc-ice
+#PBS -j oe
+#PBS -o a.out
+
+
+cd ~/Advance-Programming-Technique-Project3/src/build
+echo "Start Execution"
+module load gcc cuda openmpi
+./P31 f ../Tower256.txt a.txt
