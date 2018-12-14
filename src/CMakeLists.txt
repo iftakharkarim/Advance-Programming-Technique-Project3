@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 
-project(P3 LANGUAGES CXX CUDA)
+project(p3 LANGUAGES CXX CUDA)
 
 find_package(CUDA QUIET REQUIRED)
 find_package(MPI REQUIRED)
@@ -19,10 +19,10 @@ add_library(P3LIB STATIC
 		cuda/complex.cuh
 		)
 
-add_executable(P31 cthreads/MainThread.cc)
-add_executable(P32 mpi/p32.cpp)
-add_executable(P33 cuda/mainofCuda.cu)
+add_executable(p31 cthreads/MainThread.cc)
+add_executable(p32 mpi/p32.cpp)
+add_executable(p33 cuda/mainofCuda.cu)
 
-set_target_properties(P33 PROPERTIES CUDA_SEPERABLE_COMPILATION ON)
-target_link_libraries(P33 PRIVATE P3LIB)
-target_link_libraries(P32 ${MPI_LIBRARIES})
+set_target_properties(p33 PROPERTIES CUDA_SEPERABLE_COMPILATION ON)
+target_link_libraries(p33 PRIVATE P3LIB)
+target_link_libraries(p32 ${MPI_LIBRARIES})
